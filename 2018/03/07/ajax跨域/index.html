@@ -9,19 +9,19 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="什么是跨域协议、域名、端口  产生跨域问题的原因 浏览器限制 跨域（违反同源策略） 所有的浏览器都支持同源策略（解决安全问题，针对cookie提出的），所谓的同源是指三个相同：* 协议相同 * 域名相同 * 端口相同  XHR(XMLHttpRequest)请求  解决思路 浏览器（客户端可以改动，不可行） xhr（JSONP）  现在简单的介绍一下jsonp      jsonp是一种动态插入s">
-<meta name="keywords" content="跨域">
+  <meta name="description" content="什么是跨域协议、域名、端口  产生跨域问题的原因 浏览器限制 跨域（违反同源策略） 所有的浏览器都支持同源策略（解决安全问题，针对cookie提出的），所谓的同源是指三个相同： 协议相同 域名相同 端口相同   XHR(XMLHttpRequest)请求  解决思路 浏览器（客户端可以改动，不可行） xhr（JSONP）  现在简单的介绍一下jsonp      jsonp是一种动态插入scrip">
+<meta name="keywords" content="跨域 cors">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ajax跨域">
 <meta property="og:url" content="http://yoursite.com/2018/03/07/ajax跨域/index.html">
 <meta property="og:site_name" content="小黑来了">
-<meta property="og:description" content="什么是跨域协议、域名、端口  产生跨域问题的原因 浏览器限制 跨域（违反同源策略） 所有的浏览器都支持同源策略（解决安全问题，针对cookie提出的），所谓的同源是指三个相同：* 协议相同 * 域名相同 * 端口相同  XHR(XMLHttpRequest)请求  解决思路 浏览器（客户端可以改动，不可行） xhr（JSONP）  现在简单的介绍一下jsonp      jsonp是一种动态插入s">
+<meta property="og:description" content="什么是跨域协议、域名、端口  产生跨域问题的原因 浏览器限制 跨域（违反同源策略） 所有的浏览器都支持同源策略（解决安全问题，针对cookie提出的），所谓的同源是指三个相同： 协议相同 域名相同 端口相同   XHR(XMLHttpRequest)请求  解决思路 浏览器（客户端可以改动，不可行） xhr（JSONP）  现在简单的介绍一下jsonp      jsonp是一种动态插入scrip">
 <meta property="og:locale" content="曹文艳">
 <meta property="og:image" content="http://yoursite.com/image/ajax-cors-architecture.jpg">
-<meta property="og:updated_time" content="2018-09-08T05:34:08.735Z">
+<meta property="og:updated_time" content="2018-09-08T08:45:41.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ajax跨域">
-<meta name="twitter:description" content="什么是跨域协议、域名、端口  产生跨域问题的原因 浏览器限制 跨域（违反同源策略） 所有的浏览器都支持同源策略（解决安全问题，针对cookie提出的），所谓的同源是指三个相同：* 协议相同 * 域名相同 * 端口相同  XHR(XMLHttpRequest)请求  解决思路 浏览器（客户端可以改动，不可行） xhr（JSONP）  现在简单的介绍一下jsonp      jsonp是一种动态插入s">
+<meta name="twitter:description" content="什么是跨域协议、域名、端口  产生跨域问题的原因 浏览器限制 跨域（违反同源策略） 所有的浏览器都支持同源策略（解决安全问题，针对cookie提出的），所谓的同源是指三个相同： 协议相同 域名相同 端口相同   XHR(XMLHttpRequest)请求  解决思路 浏览器（客户端可以改动，不可行） xhr（JSONP）  现在简单的介绍一下jsonp      jsonp是一种动态插入scrip">
 <meta name="twitter:image" content="http://yoursite.com/image/ajax-cors-architecture.jpg">
   
     <link rel="alternative" href="/atom.xml" title="小黑来了" type="application/atom+xml">
@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a>
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/跨域-cors/" style="font-size: 10px;">跨域 cors</a>
 					</div>
 				</section>
 				
@@ -195,7 +195,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域-cors/">跨域 cors</a></li></ul>
 	</div>
 
         
@@ -210,10 +210,12 @@
         <h2 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h2><p>协议、域名、端口 </p>
 <h2 id="产生跨域问题的原因"><a href="#产生跨域问题的原因" class="headerlink" title="产生跨域问题的原因"></a>产生跨域问题的原因</h2><ol>
 <li>浏览器限制</li>
-<li>跨域（违反同源策略）<br> 所有的浏览器都支持同源策略（解决安全问题，针对cookie提出的），所谓的同源是指三个相同：<pre><code>* 协议相同
-* 域名相同
-* 端口相同
-</code></pre></li>
+<li>跨域（违反同源策略）<br> 所有的浏览器都支持同源策略（解决安全问题，针对cookie提出的），所谓的同源是指三个相同：<ul>
+<li>协议相同</li>
+<li>域名相同</li>
+<li>端口相同</li>
+</ul>
+</li>
 <li>XHR(XMLHttpRequest)请求</li>
 </ol>
 <h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><ul>
@@ -278,9 +280,11 @@
 <li>apache实现<br> 参考<a href="https://www.imooc.com/video/16592" target="_blank" rel="noopener">https://www.imooc.com/video/16592</a></li>
 </ul>
 <ul>
-<li>调用方：隐藏跨域<pre><code>* 反向代理：访问a，其实访问的是b
-* host和conf配置
-</code></pre></li>
+<li>调用方：隐藏跨域<ul>
+<li>反向代理：访问a，其实访问的是b</li>
+<li>host和conf配置</li>
+</ul>
+</li>
 </ul>
 <p>参考资料：<br><a href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html</a><br><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/04/cors.html</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS</a><br><a href="https://segmentfault.com/a/1190000012469713" target="_blank" rel="noopener">https://segmentfault.com/a/1190000012469713</a><br><a href="https://www.imooc.com/learn/947" target="_blank" rel="noopener">https://www.imooc.com/learn/947</a></p>
 
@@ -292,15 +296,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/09/06/搭建hexo博客/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
-        
-          搭建hexo博客
-        
-      </div>
-    </a>
   
+    <a href="/2017/09/06/搭建hexo博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">搭建hexo博客</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
   
 </nav>
 
