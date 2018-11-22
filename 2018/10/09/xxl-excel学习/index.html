@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://caowenyan.github.io">
-  <title>Archives | 小黑来了</title>
+  <title>xxl-excel学习.md | 小黑来了</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="胆小认生，不易相处">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小黑来了">
-<meta property="og:url" content="https://caowenyan.github.io/archives/index.html">
+  <meta name="description" content="介绍了bean和excel之间的互相转化">
+<meta name="keywords" content="excel,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xxl-excel学习.md">
+<meta property="og:url" content="https://caowenyan.github.io/2018/10/09/xxl-excel学习/index.html">
 <meta property="og:site_name" content="小黑来了">
-<meta property="og:description" content="胆小认生，不易相处">
+<meta property="og:description" content="介绍了bean和excel之间的互相转化">
 <meta property="og:locale" content="简体中文">
+<meta property="og:image" content="https://caowenyan.github.io/image/xxl-excel-file-format.jpg%22xxl-excel-file-format%22">
+<meta property="og:updated_time" content="2018-11-22T03:28:26.614Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小黑来了">
-<meta name="twitter:description" content="胆小认生，不易相处">
+<meta name="twitter:title" content="xxl-excel学习.md">
+<meta name="twitter:description" content="介绍了bean和excel之间的互相转化">
+<meta name="twitter:image" content="https://caowenyan.github.io/image/xxl-excel-file-format.jpg%22xxl-excel-file-format%22">
   
     <link rel="alternative" href="/atom.xml" title="小黑来了" type="application/atom+xml">
   
@@ -165,36 +169,67 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-xxl-excel学习" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/09/xxl-excel学习/" class="archive-article-date">
-  	<time datetime="2018-10-09T03:02:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/09/xxl-excel学习/">xxl-excel学习.md</a>
+    <h1 class="article-title" itemprop="name">
+      xxl-excel学习.md
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/10/09/xxl-excel学习/" class="archive-article-date">
+  	<time datetime="2018-10-09T03:02:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="xxl-excel目的"><a href="#xxl-excel目的" class="headerlink" title="xxl-excel目的"></a>xxl-excel目的</h2><p>XXL-EXCEL 是一个一行代码完成Java对象和Excel之间的转换。<br><a id="more"></a></p>
+<h2 id="xxl-excel学习文档"><a href="#xxl-excel学习文档" class="headerlink" title="xxl-excel学习文档"></a>xxl-excel学习文档</h2><p><a href="http://www.xuxueli.com/xxl-excel/#/?id=%E3%80%8Ajava%E5%AF%B9%E8%B1%A1%E5%92%8Cexcel%E8%BD%AC%E6%8D%A2%E5%B7%A5%E5%85%B7xxl-excel%E3%80%8B" target="_blank" rel="noopener">xxl-excel学习文档</a></p>
+<h2 id="xxl-excel介绍"><a href="#xxl-excel介绍" class="headerlink" title="xxl-excel介绍"></a>xxl-excel介绍</h2><ol>
+<li>@ExcelSheet：这个表示需要获取excel的某个工作表，可能有多个，所以需要定位工作表的名字，若是想获取一系列的，还需要优化代码。</li>
+<li>@ExcelField：这是bean和excel之间转化的必须的bean，这个需要注意几点：<ul>
+<li>这个注解中的name对应excel中的表头，在exportToFile中通过这个属性来命名某个字段的名称，表头<br><img src="/image/xxl-excel-file-format.jpg&quot;xxl-excel-file-format&quot;" alt="xxl-excel-file-format"></li>
+<li>这个注解上的格式化dateformat用于把date类型的数据转化成格式化之后的数据然后存储到excel</li>
+<li>这个注解用于存储各种类型的数据，不过存储到excel都是string类型，读取的时候也是根据field转化为对应的类型，<strong>所以注意在excel中所有的类型都是string类型</strong></li>
+<li><strong>这些注解和excel首行的名字是顺序对应，而不是名字对应，所以这也是个弊端，影响了我开始对他的认知</strong>。例如bean的field顺序是id，name，age，city，那excel种也必须保证相同的顺序，<strong>注解的name只是在保存到excel中首行的。</strong>（<em>要想改进这一点需要将首行的名字和注解字段建立关联关系，然后依次组装bean</em>）。</li>
+</ul>
+</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -210,7 +245,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -223,118 +258,104 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://caowenyan.github.io/2018/10/09/xxl-excel学习/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/07/ajax跨域/" class="archive-article-date">
-  	<time datetime="2018-03-07T07:04:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/07/ajax跨域/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ajax跨域</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/07/ajax跨域/">ajax跨域</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">跨域</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">cors</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/跨域//" class="article-tag-list-link color3">跨域</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/06/搭建hexo博客/" class="archive-article-date">
-  	<time datetime="2017-09-06T07:56:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-06</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/06/搭建hexo博客/">搭建hexo博客</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -357,8 +378,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

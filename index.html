@@ -167,6 +167,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-xxl-excel学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/09/xxl-excel学习/">xxl-excel学习.md</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/09/xxl-excel学习/" class="archive-article-date">
+  	<time datetime="2018-10-09T03:02:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="xxl-excel目的"><a href="#xxl-excel目的" class="headerlink" title="xxl-excel目的"></a>xxl-excel目的</h2><p>XXL-EXCEL 是一个一行代码完成Java对象和Excel之间的转换。<br>
+        
+          <a class="article-more-a" href="/2018/10/09/xxl-excel学习/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">excel</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/excel工具//" class="article-tag-list-link color3">excel工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/09/xxl-excel学习/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ajax跨域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -196,78 +287,10 @@
 <li>端口相同</li>
 </ul>
 </li>
-<li>XHR(XMLHttpRequest)请求</li>
-</ol>
-<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><ul>
-<li>浏览器（客户端可以改动，不可行）</li>
-<li><p>xhr（JSONP）<br>  现在简单的介绍一下jsonp    </p>
-<ul>
-<li>jsonp是一种动态插入script，执行完就删除插入的代码</li>
-<li>若是有基本的ajax改为jsonp请求，会报错误<code>Uncaught SyntaxError: Unexpected token :</code></li>
-<li>所以需要服务器后台也需要改动</li>
-<li>jsonp是一种约定，callback是默认值，也可以改变约定的名字</li>
-<li><p>jsonp和ajax的对比</p>
-<p>请求类型|type|Content-type|url<br>—|:–:|:–:|:–:|—:<br>jsonp|script|application/javascript|uri?callback=…..<br>ajax|xhr|application/json|uri</p>
-</li>
-<li>jsonp弊端<ul>
-<li>需要服务器改动代码</li>
-<li>只支持get请求</li>
-<li>发送的不是xhr请求（不支持异步、事件等）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>跨域<br>  <img src="/image/ajax-cors-architecture.jpg" alt="ajax-cros-architecture" title="ajax-cros-architecture"><ul>
-<li>被调用方：支持跨域，修改代码，同公司<ul>
-<li>服务器实现<ul>
-<li>浏览器是先执行还是先判断？<ul>
-<li>简单请求是先请求在判断，非简单请求是先判断（OPTIONS）在请求</li>
-<li>简单请求和非简单请求对比：<ol>
-<li>方法： <strong>GET、HEAD、POST</strong></li>
-<li>header<ul>
-<li><strong>无自定义头</strong></li>
-<li>Content-Type：<ul>
-<li><strong>text/plain</strong></li>
-<li><strong>multipart/form-data</strong></li>
-<li><strong>application/x-www-form-unlencoded</strong><br>不满足以上2点的都是非简单请求，如方法为DELETE，Content-Type为application/json，增加header保存一些共有信息。<br>*参数讲解</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>Access-Control-Allow-Origin：浏览器的地址，也可以是*，但是针对cookie不可取</li>
-<li>Access-Control-Allow-Method：支持的方法，加入DELETE等或者“*”</li>
-<li>Access-Control-Allow-Header：加入Content-Type，还有前端主动加入的header字段，也可以通过<strong>获取request的Access-Control-Allow-Header字段填充response的header</strong></li>
-<li>Access-Control-Max-Age：预检命令缓存的时间（秒），在缓存的时间内即使后端的cors设置错误，也不会影响正常访问，除非清除缓存，或者预检缓存到期</li>
-<li>Access-Control-Allow-Credentials：cookie应该加到被调用方，因为是在被调用方获取cookie的</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>nginx实现<ul>
-<li>虚拟主机：多个域名指向同一个服务器</li>
-<li>在conf目录下简历vhost目录，在nginx.conf最后加入<code>include vhost/*.conf</code><br>*配置文件例子<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	listen 80;</span><br><span class="line">	server_name b.com</span><br><span class="line">	location /&#123;</span><br><span class="line">		proxy_pass http://localhost:8080/;</span><br><span class="line">		add_header Access-Control-Allow-Origin $http_origin</span><br><span class="line">		add_header Access-Control-Allow-Methods *</span><br><span class="line">		add_header Access-Control-Request-Headers $http_access-control-request-headers</span><br><span class="line">		add_header Access-Control-Max-Age 3600</span><br><span class="line">		add_header Access-Control-Allow-Credentials true</span><br><span class="line">		//防止穿透到应用服务器，if和（之间必须有空格</span><br><span class="line">		if ($reequest_method == OPTIONS)&#123;</span><br><span class="line">			return 200;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>apache实现<br> 参考<a href="https://www.imooc.com/video/16592" target="_blank" rel="noopener">https://www.imooc.com/video/16592</a></li>
-</ul>
-<ul>
-<li>调用方：隐藏跨域(简)<ul>
-<li>反向代理：访问a，其实访问的是b</li>
-<li>host和conf配置</li>
-</ul>
-</li>
-</ul>
-<h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p><a href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html</a><br><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/04/cors.html</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS</a><br><a href="https://segmentfault.com/a/1190000012469713" target="_blank" rel="noopener">https://segmentfault.com/a/1190000012469713</a><br><a href="https://www.imooc.com/learn/947" target="_blank" rel="noopener">https://www.imooc.com/learn/947</a></p>
-
+<li>XHR(XMLHttpRequest)请求
+        
+          <a class="article-more-a" href="/2018/03/07/ajax跨域/#more">more >></a>
+        
       
 
       
@@ -368,25 +391,9 @@
 <li>配置用户名和邮箱<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name  &quot;caowenyan&quot;// 你的github用户名，非昵称 </span><br><span class="line">git config --global user.email  &quot;xxx@qq.com&quot;// 填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="搭建hexo环境"><a href="#搭建hexo环境" class="headerlink" title="搭建hexo环境"></a>搭建hexo环境</h2><ol>
-<li>安装hexo环境<br><code>npm install -g hexo-cli</code></li>
-<li>建立一个用于存放博客的文件夹，初始化<br><code>hexo init</code><br>此时生成的目录结构如图所示<br><img src="/image/hexo目录结构.jpg" alt="图片" title="目录结构"></li>
-<li>生成静态代码块，并启动服务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g # 生成 </span><br><span class="line">hexo s # 启动服务</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>打开网站<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>皆可以看到hello word的博客已经成功。</p>
-<h2 id="hexo和github建立关联"><a href="#hexo和github建立关联" class="headerlink" title="hexo和github建立关联"></a>hexo和github建立关联</h2><ol>
-<li><p>在_config.yml中配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy: </span><br><span class="line">  type: git </span><br><span class="line">  repository: git@github.com:caowenyan/caowenyan.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>下载插件<br>此时执行<code>hexo d</code>会报错<code>Deployer not found: git</code>，所以需要下载插件：<br><code>npm install hexo-deployer-git --save</code><br>然后执行<code>hexo d</code>将把代码提交到github，通过<a href="http://caowenyan.github.io">http://caowenyan.github.io</a>即可查看搭建好的网站。</p>
-</li>
-</ol>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="http://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" target="_blank" rel="noopener">http://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html</a></li>
-<li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a></li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2017/09/06/搭建hexo博客/#more">more >></a>
+        
       
 
       
@@ -532,15 +539,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">跨域</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">cors</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">excel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
             
             <div class="clearfix"></div>
